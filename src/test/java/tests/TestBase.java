@@ -7,6 +7,7 @@ import org.aeonbits.owner.ConfigFactory;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeAll;
 import org.openqa.selenium.remote.DesiredCapabilities;
+import sun.jvm.hotspot.utilities.Assert;
 
 import static com.codeborne.selenide.Selenide.closeWebDriver;
 import static com.codeborne.selenide.logevents.SelenideLogger.addListener;
@@ -24,6 +25,10 @@ public class TestBase {
         capabilities.setCapability("enableVideo", true);
         Configuration.browserCapabilities = capabilities;
         Configuration.browser = System.getProperty("web.browser", "chrome");
+
+        if (Boolean.parseBoolean(System.getProperty("web.maximized", "false"))) {
+            Configuration.startMaximized = true;
+        }
 
         String remoteWebDriver = System.getProperty("remote.web.driver");
 
