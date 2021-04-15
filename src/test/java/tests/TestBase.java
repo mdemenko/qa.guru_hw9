@@ -37,7 +37,6 @@ public class TestBase {
             System.out.println(remoteWebDriver);
             System.out.println(String.format(remoteWebDriver, user, password));
         }
-
     }
 
     @AfterEach
